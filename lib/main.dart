@@ -1,5 +1,6 @@
 import 'package:chequeamefirestore2/services/dialog_service.dart';
 import 'package:chequeamefirestore2/services/navigation_service.dart';
+import 'package:chequeamefirestore2/ui/views/policy_view.dart';
 
 import 'package:chequeamefirestore2/ui/views/startup_view.dart';
 

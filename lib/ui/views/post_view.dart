@@ -52,7 +52,7 @@ List<charts.Series<DeudaBarData, String>> _createBarData12(
 
     var data = new List<DeudaBarData>();
     for (var i = num_months - 1; i >= 0; i--) {
-      var fecha = (i == 0) ? '' : deudas24[0].periodos[i].fecha;
+      var fecha = (i == 0) ? '' : deudas24[0].periodos[i - 1].fecha;
       data.add(new DeudaBarData('${i + 1}', fecha, sum[i]));
     }
 
@@ -374,85 +374,84 @@ class _ProgressCardState extends State<PostView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
-                              //Stack(children: [
-                              //  Container(
-                              //    margin: EdgeInsets.only(top: 40),
-                              //    child: Text("Score:",
-                              //        textAlign: TextAlign.start,
-                              //        style: data4Style),
-                              //  ),
-                              //  Container(
-                              //      margin: EdgeInsets.symmetric(
-                              //          horizontal: 15.0, vertical: 0.0),
-                              //      height: size.width - 50,
-                              //      child: Stack(
-                              //        children: <Widget>[
-                              //          charts.PieChart(
-                              //            _createSampleData(),
-                              //            animate: false,
-                              //            defaultRenderer:
-                              //                new charts.ArcRendererConfig(
-                              //                    arcWidth: (size.width / 12)
-                              //                        .round()
-                              //                        .toInt(),
-                              //                    startAngle: pi,
-                              //                    arcLength: pi),
-                              //          ),
-                              //          CustomPaint(
-                              //            painter: ShapesPainter(),
-                              //            child: Container(
-                              //              height: size.width,
-                              //            ),
-                              //          ),
-                              //          Container(
-                              //              height: (size.width) -
-                              //                  (size.width / 1.6),
-                              //              margin: EdgeInsets.only(
-                              //                  top: (size.width / 1.6) / 2.5),
-                              //              decoration: BoxDecoration(
-                              //                  shape: BoxShape.circle,
-                              //                  boxShadow: [
-                              //                    BoxShadow(
-                              //                      blurRadius: 2.0,
-                              //                      color: Colors.black
-                              //                          .withOpacity(.5),
-                              //                      offset: Offset(0, 1.0),
-                              //                    ),
-                              //                  ],
-                              //                  color: Colors.white),
-                              //              child: Center(
-                              //                child: Text(
-                              //                  (info.score / 10)
-                              //                      .toInt()
-                              //                      .toString(),
-                              //                  style: TextStyle(
-                              //                      fontSize: 32.0,
-                              //                      color: Colors.blue,
-                              //                      fontWeight:
-                              //                          FontWeight.bold),
-                              //                ),
-                              //              )),
-                              //        ],
-                              //      )),
-                              //  Container(
-                              //    margin:
-                              //        EdgeInsets.only(top: size.width / 1.4),
-                              //    width: double.infinity,
-                              //    child: Text(info.scoreText(),
-                              //        textAlign: TextAlign.center,
-                              //        style: scoreResultStyle),
-                              //  ),
-                              //  new Container(
-                              //    margin: EdgeInsets.only(
-                              //        left: 40,
-                              //        right: 40,
-                              //        top: size.width / 1.4 + 30),
-                              //    height: 2,
-                              //    color: info.scoreColor(),
-                              //  ),
-                              //  UIHelper.verticalSpaceMedium(),
-                              //]),
-                              UIHelper.verticalSpaceMedium(),
+                              Stack(children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 40),
+                                  child: Text("Score:",
+                                      textAlign: TextAlign.start,
+                                      style: data4Style),
+                                ),
+                                Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 15.0, vertical: 0.0),
+                                    height: size.width - 50,
+                                    child: Stack(
+                                      children: <Widget>[
+                                        charts.PieChart(
+                                          _createSampleData(),
+                                          animate: false,
+                                          defaultRenderer:
+                                              new charts.ArcRendererConfig(
+                                                  arcWidth: (size.width / 12)
+                                                      .round()
+                                                      .toInt(),
+                                                  startAngle: pi,
+                                                  arcLength: pi),
+                                        ),
+                                        CustomPaint(
+                                          painter: ShapesPainter(),
+                                          child: Container(
+                                            height: size.width,
+                                          ),
+                                        ),
+                                        Container(
+                                            height: (size.width) -
+                                                (size.width / 1.6),
+                                            margin: EdgeInsets.only(
+                                                top: (size.width / 1.6) / 2.5),
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 2.0,
+                                                    color: Colors.black
+                                                        .withOpacity(.5),
+                                                    offset: Offset(0, 1.0),
+                                                  ),
+                                                ],
+                                                color: Colors.white),
+                                            child: Center(
+                                              child: Text(
+                                                (info.score / 10)
+                                                    .toInt()
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    fontSize: 32.0,
+                                                    color: Colors.blue,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            )),
+                                      ],
+                                    )),
+                                Container(
+                                  margin:
+                                      EdgeInsets.only(top: size.width / 1.4),
+                                  width: double.infinity,
+                                  child: Text(info.scoreText(),
+                                      textAlign: TextAlign.center,
+                                      style: scoreResultStyle),
+                                ),
+                                new Container(
+                                  margin: EdgeInsets.only(
+                                      left: 40,
+                                      right: 40,
+                                      top: size.width / 1.4 + 30),
+                                  height: 2,
+                                  color: info.scoreColor(),
+                                ),
+                                UIHelper.verticalSpaceMedium(),
+                              ]),
                               Text("Cheques rechazados:",
                                   textAlign: TextAlign.start,
                                   style: data4Style),
@@ -518,7 +517,7 @@ class _ProgressCardState extends State<PostView> {
                                                             TextAlign.start,
                                                         style: data5Style),
                                                     Text(
-                                                        "\$${oCcy.format(info.chequesMontoSinFondo())}",
+                                                        "\$${oCcy.format(info.chequesMontoSinFondo() / 100)}",
                                                         textAlign:
                                                             TextAlign.start,
                                                         style: data6Style),
@@ -657,7 +656,7 @@ class _ProgressCardState extends State<PostView> {
                                                 margin:
                                                     EdgeInsets.only(right: 40),
                                                 child: Text(
-                                                    'Situación al ${deuda.fecha.toString()}',
+                                                    'Situación ${deuda.situacion.toString()} al ${deuda.fecha.toString()}',
                                                     style: data9Style),
                                               ),
                                             ]),
@@ -727,10 +726,11 @@ class _ProgressCardState extends State<PostView> {
                               )),
                               UIHelper.verticalSpaceMedium(),
                               if (info.deudas24.length > 0)
-                                Text("Últimos 12 meses:  ",
+                                Text("Últimos 12 meses:",
                                     textAlign: TextAlign.start,
                                     style: data4Style),
-                              UIHelper.verticalSpaceMedium(),
+                              if (info.deudas24.length > 0)
+                                UIHelper.verticalSpaceMedium(),
                               if (info.deudas24.length > 0)
                                 Container(
                                     margin: EdgeInsets.symmetric(
@@ -742,11 +742,16 @@ class _ProgressCardState extends State<PostView> {
                                       barGroupingType:
                                           charts.BarGroupingType.stacked,
                                       domainAxis: new charts.OrdinalAxisSpec(
-                                          // Make sure that we draw the domain axis line.
-                                          showAxisLine: true,
-                                          // But don't draw anything else.
-                                          renderSpec:
-                                              new charts.NoneRenderSpec()),
+                                        // Make sure that we draw the domain axis line.
+                                        showAxisLine: true,
+                                        renderSpec:
+                                            charts.SmallTickRendererSpec(
+                                          labelOffsetFromTickPx: -30,
+                                          labelAnchor:
+                                              charts.TickLabelAnchor.after,
+                                          labelRotation: 80,
+                                        ),
+                                      ),
                                       // Make sure that we draw the domain axis line.
 
                                       // But don't draw anything else.
@@ -770,11 +775,15 @@ class _ProgressCardState extends State<PostView> {
                                       barGroupingType:
                                           charts.BarGroupingType.stacked,
                                       domainAxis: new charts.OrdinalAxisSpec(
-                                          // Make sure that we draw the domain axis line.
-                                          showAxisLine: true,
-                                          // But don't draw anything else.
-                                          renderSpec:
-                                              new charts.NoneRenderSpec()),
+                                        showAxisLine: true,
+                                        renderSpec:
+                                            charts.SmallTickRendererSpec(
+                                          labelOffsetFromTickPx: -10,
+                                          labelAnchor:
+                                              charts.TickLabelAnchor.after,
+                                          labelRotation: 80,
+                                        ),
+                                      ),
                                     ))
                             ])),
                     Text("Fuentes: BCRA y AFIP")

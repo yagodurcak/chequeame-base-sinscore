@@ -45,7 +45,7 @@ class AuthenticationService {
         id: authResult.user.uid,
         email: email,
         fullName: fullName,
-        queries: 3,
+        queries: 10,
       );
 
       await _firestoreService.createUser(_currentUser);

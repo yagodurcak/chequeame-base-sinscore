@@ -1,4 +1,4 @@
-package com.example.chequeamefirestore2
+package com.chequeame.firestore2
 
 import io.flutter.embedding.android.FlutterActivity
 
